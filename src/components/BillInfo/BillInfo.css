@@ -1,0 +1,106 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+}
+
+.cust_data_Section{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cust_data {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: left;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.cust_data:hover{
+    transform: scale(1.1);
+}
+
+.cust_bill_section{
+    margin-top: 20px;
+}
+
+.date_section {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgb(154, 223, 255);
+    border: 1px solid black;
+    font-size: large
+}
+
+.date_section input{
+   margin-left: 20px;
+    font-size: large;
+} 
+
+.confirmation_dialog{
+    margin-top: 20px;
+}
+
+.confirmation_dialog button{
+    background-color: rgb(255, 127, 127);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+/* Define alternate row background colors */
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Light gray */
+}
+tbody tr:nth-child(even) {
+    background-color: #ffffff; /* White */
+}
+
+/* Remove border from table */
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    
+}
+
+/* Style table headers */
+th {
+    border-bottom: 1px solid #ddd; /* Add bottom border to table headers */
+    padding: 20px;
+    text-align: left;
+}
+
+/* Style table cells */
+td {
+    padding: 20px;
+    text-align: left;
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    .container{
+        padding: 50px;
+    }
+    table {
+        width: 95%;
+    }
+  }
+
+  
+@media only screen and (max-width: 625px) {
+    .container{
+        padding: 0%;
+    }
+
+    .cust_data_Section{
+        flex-direction: column-reverse;
+    }
+
+    table {
+        width: 100%;
+    }
+  }

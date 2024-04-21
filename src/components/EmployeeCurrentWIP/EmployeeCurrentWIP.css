@@ -1,0 +1,40 @@
+
+.employee_WIP{
+    width: fit-content;
+    height: 30vh;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+    box-shadow: 5px 5px 10px #888888;
+}
+
+
+
+.employee_WIP ion-icon{
+    color: black;
+    font-size: 2rem;
+}
+
+.edit_employee_WIP, .delete_employee_WIP{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.add_employee_WIP{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    z-index: 10;
+    box-shadow: 5px 5px 10px #888888;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.add_employee_WIP:active{
+    transform: scale(0.9);
+}

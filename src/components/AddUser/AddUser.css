@@ -1,0 +1,25 @@
+.input_section input{
+    margin: 20px;
+    width: 300px;
+    height: 3rem;
+    padding-left: 10px;
+    border-radius: 25px;
+}
+
+
+.btn{
+    width: 200px;
+    height: 3rem;
+    margin: 20px;
+    text-decoration: none;
+    padding: 15px;
+    color: black;
+    background-color: rgb(132, 226, 193);
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn2{
+    background-color: rgb(159, 186, 219);
+}

@@ -1,0 +1,13 @@
+div{
+  text-align: center;
+}
+
+.edit{
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 5px 5px 10px #888888;
+  border-radius: 10px;
+}
