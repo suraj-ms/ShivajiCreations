@@ -12,13 +12,13 @@ const BillDetails = ({ order }) => (
                 <div className="ph_number cust_data"> <p>Phone Number: {order.phone_number}</p></div>
             </>
         ) : (
-            <p>Order not found.</p>
+            <p className='ord_not_found'>Order not found.</p>
         )}
     </section>
 );
 
-const DateInputWithConfirmation = ({ label }) => {
-    const [selectedDate, setSelectedDate] = useState('');
+const DateInputWithConfirmation = ({ label, initialDate }) => {
+    const [selectedDate, setSelectedDate] = useState(initialDate || '');
     const [confirming, setConfirming] = useState(false);
 
     const handleDateChange = (e) => {
@@ -82,19 +82,21 @@ const EditPopup = ({ order, onClose, onUpdateData }) => {
 
     return (
         <div className="edit_popup">
+            <span onClick={onClose}><ion-icon name="close-outline"></ion-icon></span>
             <h2>Edit Particular</h2>
+            <br />
             {Object.keys(PRICES).map(particular => (
-                <div key={particular}>
+                <div className='edit_popup_items' key={particular}>
                     <label>{particular}</label>
                     <input
-                        type="number"
+                        type="text"
                         value={editedParticular[particular] || ''}
                         onChange={(e) => handleParticularChange(e, particular)}
                     />
                 </div>
             ))}
             {!confirmSave ? (
-                <button onClick={handleSaveConfirmation}>Save</button>
+                <button className='edit_popup_save_btn' onClick={handleSaveConfirmation}>Save</button>
             ) : (
                 <div className="confirmation_dialog">
                     <p>Are you sure you want to save the changes?</p>
@@ -102,7 +104,6 @@ const EditPopup = ({ order, onClose, onUpdateData }) => {
                     <button onClick={handleCancel}>Cancel</button>
                 </div>
             )}
-            <button onClick={onClose}>Cancel</button>
         </div>
     );
 };
@@ -112,6 +113,10 @@ const BillInfo = () => {
     const [data, setData] = useState(DATA);
     const order = data.find(item => item.order_number === parseInt(order_number));
     const [editPopupOpen, setEditPopupOpen] = useState(false);
+
+    // Extract dates from order
+    const trailDate = order ? order.trail_date : '';
+    const deliveryDate = order ? order.delivery_date : '';
 
     const openEditPopup = () => setEditPopupOpen(true);
     const closeEditPopup = () => setEditPopupOpen(false);
@@ -133,8 +138,13 @@ const BillInfo = () => {
         <section className='container'>
             <div className="cust_data_Section">
                 <div>
-                    <DateInputWithConfirmation label="Trail Date" />
-                    <DateInputWithConfirmation label="Delivery Date" />
+                    {order && (
+                        <>
+                            {/* Pass initial dates to DateInputWithConfirmation */}
+                            <DateInputWithConfirmation label="Trail Date" initialDate={trailDate} />
+                            <DateInputWithConfirmation label="Delivery Date" initialDate={deliveryDate} />
+                        </>
+                    )}
                 </div>
                 <div className="cust_details">
                     <BillDetails order={order} />
@@ -172,7 +182,7 @@ const BillInfo = () => {
                     </section>
                 )}
             </div>
-            <button onClick={openEditPopup}>Edit</button>
+            {order && <button className='edit_btn' onClick={openEditPopup}>Edit</button>}
             {editPopupOpen && <EditPopup order={order} onClose={closeEditPopup} onUpdateData={updateData} />}
         </section>
     );
